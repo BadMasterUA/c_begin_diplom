@@ -106,11 +106,15 @@ void List<T>::push_front(T value)
 template <typename T>
 void List<T>::push_back(T value)
 {
-    ListCell *newCell = new ListCell(value, tail);
-    tail = newCell;
-    if(tail == nullptr)
+    ListCell *newCell = new ListCell(value, nullptr);
+    if(tail != nullptr)
     {
-        tail = newCell;
+        tail->next = newCell;
+    }
+    tail = newCell;
+    if(head == nullptr)
+    {
+        head = newCell;
     }
     ++theCount;
 }
@@ -200,9 +204,10 @@ typename List<T>::Iterator List<T>::end() const
 int main()
 {
     List<int> myList;
-    myList.push_front(1);
+    myList.push_front(5);
+    myList.push_back(1);
     myList.push_back(2);
-    myList.push_back(3);
+    myList.push_front(3);
 
     //вывод
     for(auto it = myList.begin(); it != myList.end(); ++it)
