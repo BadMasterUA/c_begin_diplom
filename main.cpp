@@ -74,7 +74,7 @@ T List<T>::back() const
     {
         return tail->val;
     }
-    throw std::cout << "List is empty";
+    throw std::runtime_error("List is empty");
 }
 
 //вставка
@@ -95,7 +95,7 @@ void List<T>::push_front(T value)
 {
     ListCell *newCell = new ListCell(value, head);
     head = newCell;
-    if(tail == null)
+    if(tail == nullptr)
     {
         tail = newCell;
     }
@@ -104,11 +104,11 @@ void List<T>::push_front(T value)
 
 //додавление в конец списка
 template <typename T>
-void push_back(T value)
+void List<T>::push_back(T value)
 {
     ListCell *newCell = new ListCell(value, tail);
     tail = newCell;
-    if(tail == null)
+    if(tail == nullptr)
     {
         tail = newCell;
     }
@@ -117,7 +117,7 @@ void push_back(T value)
 
 //удаление первого эл.
 template <typename T>
-void pop_front()
+void List<T>::pop_front()
 {
     if(head != nullptr)
     {
@@ -130,7 +130,7 @@ void pop_front()
 
 //удаление последнего эл.
 template <typename T>
-void pop_back()
+void List<T>::pop_back()
 {
     if (tail != nullptr)
     {
