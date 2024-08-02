@@ -1,0 +1,10 @@
+.vscode/
+.files/
+.img/
+*.exe
+*.jpg
+*.png
+*.svg
+*.bmp
+*.odt
+*.odt#
