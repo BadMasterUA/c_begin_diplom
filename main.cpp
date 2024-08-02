@@ -13,6 +13,13 @@ public:
     void pop_front() {}; //удаление первого здачения в списе
     void pop_back() {}; //удаление последнего здачения в списе
 	void insert(T value); //вставка эл. в список
+
+    //тут я что-то на городил
+    class Iterator; // объявление класса итератора
+    Iterator begin() const; // функция begin
+    Iterator end() const; // функция end
+    //тут закончил
+
     int size() { return theCount; } //возврашаем кол-во эл.
 	bool is_present(T value) const;
 	T is_empty() const
@@ -158,6 +165,36 @@ bool List<T>::is_present(T value) const
     }
     return false;
 }
+
+//тут реализиция велосепеда
+// класс итератора
+template <typename T>
+class List<T>::Iterator
+{
+public:
+    Iterator(ListCell *ptr) : current(ptr) {}
+    T& operator*() { return current->val; }
+    Iterator& operator++() { current = current->next; return *this; }
+    bool operator!=(const Iterator& other) const { return current != other.current; }
+private:
+    ListCell *current;
+};
+
+// функция begin
+template <typename T>
+typename List<T>::Iterator List<T>::begin() const
+{
+    return Iterator(head);
+}
+
+// функция end
+template <typename T>
+typename List<T>::Iterator List<T>::end() const
+{
+    return Iterator(nullptr);
+}
+//велосепед окончен
+
 int main()
 {
     return 0;
