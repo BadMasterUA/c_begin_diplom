@@ -8,12 +8,12 @@ class List
 public:
     List() : head(0), tail(0), theCount(0) {}
 	virtual ~List();
-    T front() const {}; //возврашает значение первого эл.
-    T back() const {}; //возврашает значение последнего эл.
-    void push_front(T value) {}; //добавдление дового эд. в начало списка
-    void push_back(T value) {}; //добавдление дового эд. в конец списка
-    void pop_front() {}; //удаление первого здачения в списе
-    void pop_back() {}; //удаление последнего здачения в списе
+    T front() const; //возврашает значение первого эл.
+    T back() const; //возврашает значение последнего эл.
+    void push_front(T value); //добавдление дового эд. в начало списка
+    void push_back(T value); //добавдление дового эд. в конец списка
+    void pop_front(); //удаление первого здачения в списе
+    void pop_back(); //удаление последнего здачения в списе
 	void insert(T value); //вставка эл. в список
 
     //тут я что-то на городил
@@ -64,11 +64,11 @@ T List<T>::front() const
     {
         return head->val;
     }
-    throw std::cout << "List is empty";
+    throw std::runtime_error("List is empty");
 }
 //возврашает значение последнего эл.
 template <typename T>
-T List<T>::front() const
+T List<T>::back() const
 {
     if(head != nullptr)
     {
